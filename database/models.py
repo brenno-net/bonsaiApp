@@ -1,13 +1,13 @@
-from .db import conectar
+import sqlite3
 
-def inserir_planta(nome, especie, data_aquisicao, localizacao, observacoes):
-    conn = conectar()
+def inserir_planta(nome, especie, local, observacoes, data_registro):
+    conn = sqlite3.connect('data/bonsai.db')
     cursor = conn.cursor()
 
-    cursor.execute("""
-        INSERT INTO plantas (nome, especie, data_aquisicao, localizacao, observacoes)
-        VALUES (?, ?, ?, ?, ?);
-    """, (nome, especie, data_aquisicao, localizacao, observacoes))
+    cursor.execute('''
+        INSERT INTO plantas (nome, especie, local, observacoes, data_registro)
+        VALUES (?, ?, ?, ?, ?)
+    ''', (nome, especie, local, observacoes, data_registro))
 
     conn.commit()
     conn.close()
