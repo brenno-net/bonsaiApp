@@ -19,7 +19,7 @@ def inicializar_banco():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome TEXT NOT NULL,
             especie TEXT,
-            data_aquisicao TEXT,
+            local TEXT,
             observacoes TEXT
         );
     """)
@@ -42,7 +42,7 @@ def inicializar_banco():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             planta_id INTEGER,
             data TEXT NOT NULL,
-            tipo_cuidado TEXT,
+            local TEXT,
             observacoes TEXT,
             FOREIGN KEY(planta_id) REFERENCES plantas(id)
         );
